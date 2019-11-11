@@ -17,15 +17,20 @@ class Card {
         return this.image;
     }
 
-    double getImageWidth() {
-        return this.image.getImage().getWidth();
-    }
-
-    double getImageHeight() {
-        return this.image.getImage().getHeight();
-    }
-
     int getCardValue() {
-        return value;
+        return this.value;
+    }
+
+    void setCardValue(int value) {
+        this.value = value;
+    }
+
+    String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " " + this.value;
     }
 }

@@ -1,4 +1,4 @@
-import javafx.beans.value.ObservableValue;
+import javafx.animation.PauseTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -10,11 +10,17 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class GameWindow {
 
     private MenuWindow menuWindow;
     private Stage stageHandler;
+
+    private Deck deck;
 
     private Player player;
     private Dealer dealer;
@@ -22,15 +28,19 @@ class GameWindow {
     private Label statusLabel;
     private final Color textColor = Color.WHITE;
 
+    private HBox playerCardContainer;
+    private HBox dealerCardContainer;
+
+    private GridPane root;
+
     GameWindow(MenuWindow menuWindow, Stage stage) {
 
         this.menuWindow = menuWindow;
         this.stageHandler = stage;
 
-        Deck deck = new Deck();
+        deck = new Deck();
         Turn turn = new Turn();
         player = new Player(deck, turn);
-        player.drawStartingCards();
         dealer = new Dealer(deck, turn);
     }
 
@@ -40,8 +50,8 @@ class GameWindow {
 
     Scene getView() {
 
-        GridPane root = createGrid();
-        addGameElements(root);
+        root = createGrid();
+        addGameElements();
 
         return new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
     }
@@ -73,19 +83,19 @@ class GameWindow {
         return pane;
     }
 
-    private void addGameElements(GridPane root) {
+    private void addGameElements() {
 
-        addLabels(root);
-        loadBiddingUI(root);
+        addLabels();
+        loadBiddingUI();
     }
 
-    private void addLabels(GridPane root) {
+    private void addLabels() {
 
         final int vBoxSpacing = 10;
         VBox vBox = new VBox(vBoxSpacing);
         vBox.setAlignment(Pos.CENTER);
 
-        final int statusLabelFontSize = 17;
+        final int statusLabelFontSize = 24;
         statusLabel = new Label("Bidding..");
         statusLabel.setTextFill(textColor);
         statusLabel.setFont(new Font(statusLabelFontSize));
@@ -114,24 +124,32 @@ class GameWindow {
         root.add(dealerLabel, dealerLabelColumnIndex, dealerLabelRowIndex);
     }
 
-    private void addCards(GridPane root) {
+    private void addCards() {
+
+        player.drawStartingCards();
+        dealer.drawStartingCards();
 
         final int playerCardsRowIndex = 3;
         final int playerCardsColumnIndex = 0;
 
-        HBox playerCardsContainer = new HBox(8);
-        playerCardsContainer.setAlignment(Pos.CENTER);
-        playerCardsContainer.setFillHeight(true);
+        playerCardContainer = new HBox(8);
+        playerCardContainer.setAlignment(Pos.CENTER);
+        playerCardContainer.setFillHeight(true);
+        addPlayerCardsToUI();
 
-        for (Card card : player.getPlayerCards())
-            playerCardsContainer.getChildren().add(card.getImage());
+        final int dealerCardsRowIndex = 1;
+        final int dealerCardsColumnIndex = 0;
 
+        dealerCardContainer = new HBox(8);
+        dealerCardContainer.setAlignment(Pos.CENTER);
+        dealerCardContainer.setFillHeight(true);
+        addStartingDealerCardsToUI();
 
-
-        root.add(playerCardsContainer, playerCardsColumnIndex, playerCardsRowIndex);
+        root.add(dealerCardContainer, dealerCardsColumnIndex, dealerCardsRowIndex);
+        root.add(playerCardContainer, playerCardsColumnIndex, playerCardsRowIndex);
     }
 
-    private void setUpPlayerButtonsStyle(Button[] buttons, final int buttonsWidth, final int buttonsHeight) {
+    private void setUpPlayerButtonsStyle(List<Button> buttons, final int buttonsWidth, final int buttonsHeight) {
 
         final String buttonsColor = "black";
         final int buttonsFontSize = 16;
@@ -145,10 +163,28 @@ class GameWindow {
         }
     }
 
-    private void loadBiddingUI(GridPane root) {
+    private void setUpPlayerButtonStyle(Button button, final int buttonsWidth, final int buttonsHeight) {
+
+        final String buttonsColor = "black";
+        final int buttonsFontSize = 16;
+
+        button.setPrefWidth(buttonsWidth);
+        button.setPrefHeight(buttonsHeight);
+        button.setTextFill(textColor);
+        button.setStyle("-fx-background-color: " + buttonsColor);
+        button.setFont(new Font(buttonsFontSize));
+    }
+
+    private void loadBiddingUI() {
 
         final int columnIndex = 0;
         final int rowIndex = 2;
+
+        final int playerCardsRow = 3;
+        final int dealerCardsRow = 1;
+
+        clearCell(playerCardsRow, columnIndex);
+        clearCell(dealerCardsRow, columnIndex);
 
         final int spacing = 13;
         VBox vBox = new VBox(spacing);
@@ -161,7 +197,7 @@ class GameWindow {
         bidLabel.setTextFill(Color.WHITE);
 
         final int textFieldFontSize = 23;
-        TextField bidTextField = new TextField("");
+        TextField bidTextField = new TextField("1");
         bidTextField.setAlignment(Pos.CENTER);
         bidTextField.setFont(new Font(textFieldFontSize));
         bidTextField.setStyle("-fx-background-color: transparent; -fx-text-inner-color: orange;");
@@ -176,29 +212,24 @@ class GameWindow {
         Button bidButton = new Button("Confirm bid");
         bidButton.setOnAction(actionEvent -> {
 
-            if (player.bet(Integer.parseInt(bidTextField.getText()))) {
-                try {
-                    loadPlayingUI(root);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            if (player.bet(Integer.parseInt(bidTextField.getText())))
+                loadPlayingUI();
             else
-                System.out.println("Not enough money");
+                statusLabel.setText("Invalid sum.");
 
         });
 
         final int buttonsWidth = 150;
         final int buttonsHeight = 30;
-        setUpPlayerButtonsStyle(new Button[] {bidButton}, buttonsWidth, buttonsHeight);
+        setUpPlayerButtonStyle(bidButton, buttonsWidth, buttonsHeight);
 
         vBox.getChildren().addAll(bidLabel, bidTextField, bidButton);
 
-        clearCell(root, rowIndex, columnIndex);
+        clearCell(rowIndex, columnIndex);
         root.add(vBox, columnIndex, rowIndex);
     }
 
-    private void clearCell(GridPane root, final int rowIndex, final int columnIndex) {
+    private void clearCell(final int rowIndex, final int columnIndex) {
 
         for (Node node : root.getChildren()) {
             if (GridPane.getRowIndex(node) == rowIndex && GridPane.getColumnIndex(node) == columnIndex) {
@@ -208,14 +239,31 @@ class GameWindow {
         }
     }
 
-    private void loadPlayingUI(GridPane root) throws Exception{
+    private void addPlayerCardsToUI() {
+
+        playerCardContainer.getChildren().clear();
+        for (Card card : player.getPlayerCards()) {
+            playerCardContainer.getChildren().add(card.getImage());
+        }
+
+    }
+
+    private void addStartingDealerCardsToUI() {
+
+        dealerCardContainer.getChildren().clear();
+        dealerCardContainer.getChildren().addAll(dealer.getDealerCards().get(0).getImage(), deck.getFaceDownCardImage());
+    }
+
+    private void loadPlayingUI() {
+        addCards();
+        addPlayerButtons();
+    }
+
+    private void addPlayerButtons(){
         final int rowIndex = 2;
         final int columnIndex = 0;
 
         statusLabel.setText("Drawing..");
-        addCards(root);
-
-
         statusLabel.setText("Your hand value is: " + player.getHandValue());
 
         final int hBoxSpacing = 75;
@@ -224,21 +272,110 @@ class GameWindow {
 
         Button hitButton = new Button("HIT");
         hitButton.setOnAction(actionEvent -> {
-
+            player.hit();
+            statusLabel.setText("Your hand value is: " + player.getHandValue());
+            addPlayerCardsToUI();
+            checkForRoundWinner(false);
         });
 
         Button standButton = new Button("STAND");
+        standButton.setOnAction(actionEvent -> {
+            dealersTurn();
+        });
+
         Button doubleDownButton = new Button("DOUBLE DOWN");
+
+        doubleDownButton.setOnAction(actionEvent -> {
+            if (player.doubleDown()) {
+                addPlayerCardsToUI();
+                dealersTurn();
+            }
+        });
+
         Button surrenderButton = new Button("SURRENDER");
         Button takeInsuranceButton = new Button("TAKE INSURANCE");
 
         final int buttonsWidth = 150;
         final int buttonsHeight = 50;
-        setUpPlayerButtonsStyle(new Button[] {hitButton, standButton, doubleDownButton, surrenderButton, takeInsuranceButton}, buttonsWidth, buttonsHeight);
-        hBox.getChildren().addAll(hitButton, standButton, doubleDownButton, surrenderButton, takeInsuranceButton);
+
+        List<Button> buttons = new ArrayList<>();
+        buttons.add(hitButton);
+        buttons.add(standButton);
+        buttons.add(doubleDownButton);
+
+        if (dealer.getFaceUpCardName().equals("ace")) {
+            buttons.add(surrenderButton);
+            buttons.add(takeInsuranceButton);
+        }
+
+        if (dealer.getFaceUpCardValue() == 10)
+            buttons.add(surrenderButton);
+
+        setUpPlayerButtonsStyle(buttons, buttonsWidth, buttonsHeight);
+
+        hBox.getChildren().addAll(buttons);
 
         GridPane.setHalignment(hBox, HPos.CENTER);
-        clearCell(root, rowIndex, columnIndex);
+        clearCell(rowIndex, columnIndex);
         root.add(hBox, columnIndex, rowIndex);
     }
+
+    private void dealersTurn() {
+
+        final int playerCardsRow = 2;
+        final int playerCardsColumn = 0;
+
+        clearCell(playerCardsRow, playerCardsColumn);
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(actionEvent1 -> {dealerCardContainer.getChildren().add(dealer.getLastDrawnCard().getImage());});
+        revealDealerCards();
+
+        while (dealer.getHandValue() < 17) {
+            dealer.hit();
+            pause.play();
+        }
+
+        try {
+            Thread.sleep(2);
+        } catch (Exception ignored) {}
+        checkForRoundWinner(true);
+    }
+
+    private void revealDealerCards() {
+        dealerCardContainer.getChildren().clear();
+
+        for (Card card : dealer.getDealerCards())
+            dealerCardContainer.getChildren().add(card.getImage());
+    }
+
+
+    private void checkForRoundWinner(boolean computerHadTurn) {
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(4));
+        pause.setOnFinished(actionEvent -> { loadBiddingUI(); });
+
+        if (player.getHandValue() > Settings.ROUND_GOAL) {
+            statusLabel.setText("Dealer won.");
+            pause.play();
+        }
+        else if (computerHadTurn && (dealer.getHandValue() > player.getHandValue())) {
+            statusLabel.setText("Dealer won.");
+            pause.play();
+        }
+        else if (computerHadTurn && (player.getHandValue() > dealer.getHandValue())) {
+            statusLabel.setText("Player won.");
+            player.payout();
+            pause.play();
+        }
+        else if (dealer.getHandValue() > Settings.ROUND_GOAL) {
+            statusLabel.setText("Player won.");
+            player.payout();
+            pause.play();
+        } else if (computerHadTurn && (player.getHandValue() == dealer.getHandValue())) {
+            statusLabel.setText("Draw.");
+            pause.play();
+        }
+    }
+
 }

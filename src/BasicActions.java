@@ -1,6 +1,6 @@
 interface BasicActions {
 
-    void hit(Card[] cards);
+    void hit();
     void stand();
     int getHandValue();
 

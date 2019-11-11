@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdf3eb8c-b6bf-460a-88ac-a058602a11a9" name="Default Changelist" comment="" />
+    <list default="true" id="cdf3eb8c-b6bf-460a-88ac-a058602a11a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/BasicActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/BasicActions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Dealer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Deck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/GameWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BasicActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +31,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1SthykiMKrodYyWSjopjCUeQc7q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -26,6 +45,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -69,11 +89,28 @@
       <workItem from="1572617645305" duration="2721000" />
       <workItem from="1572707518952" duration="8967000" />
       <workItem from="1572791326351" duration="33114000" />
-      <workItem from="1572875056662" duration="2862000" />
+      <workItem from="1572875056662" duration="3018000" />
+      <workItem from="1572884795155" duration="10795000" />
+      <workItem from="1573050235570" duration="1802000" />
+      <workItem from="1573410815264" duration="8950000" />
+      <workItem from="1573431134068" duration="14273000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

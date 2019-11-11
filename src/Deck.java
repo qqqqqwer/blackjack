@@ -5,24 +5,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
+class Deck {
 
     private List<Card> cardsInDeck;
     private List<Card> drawnCards;
-    private ImageView faceDownCardImage;
 
     Deck() {
         initializeCards();
         reshuffleDeck();
     }
 
-    public ImageView getFaceDownCardImage() {
-        return faceDownCardImage;
+    final ImageView getFaceDownCardImage() {
+        return new ImageView(new Image("file:resources/cards/facedown.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true));
     }
 
     private void initializeCards() {
-
-        faceDownCardImage = new ImageView(new Image("file:resources/cards/facedown.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true));
 
         drawnCards = new ArrayList<>();
         this.cardsInDeck = new ArrayList<Card>();
@@ -46,22 +43,22 @@ public class Deck {
         this.cardsInDeck.add(new Card(6, "six",  new ImageView(new Image("file:resources/cards/6D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
         this.cardsInDeck.add(new Card(6, "six",  new ImageView(new Image("file:resources/cards/6H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
         this.cardsInDeck.add(new Card(6, "six",  new ImageView(new Image("file:resources/cards/6S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(7, "seven",  new ImageView(new Image("file:resources/cards/7C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(7, "seven",  new ImageView(new Image("file:resources/cards/7D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(7, "seven",  new ImageView(new Image("file:resources/cards/7H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(7, "seven",  new ImageView(new Image("file:resources/cards/7S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(8, "eight",  new ImageView(new Image("file:resources/cards/8C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(8, "eight",  new ImageView(new Image("file:resources/cards/8D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(8, "eight",  new ImageView(new Image("file:resources/cards/8H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(8, "eight",  new ImageView(new Image("file:resources/cards/9S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(9, "nine",  new ImageView(new Image("file:resources/cards/9C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(9, "nine",  new ImageView(new Image("file:resources/cards/9D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(9, "nine",  new ImageView(new Image("file:resources/cards/9H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(9, "nine",  new ImageView(new Image("file:resources/cards/9S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(10, "ten",  new ImageView(new Image("file:resources/cards/10C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(10, "ten",  new ImageView(new Image("file:resources/cards/10D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(10, "ten",  new ImageView(new Image("file:resources/cards/10H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
-        this.cardsInDeck.add(new Card(10, "ten",  new ImageView(new Image("file:resources/cards/10S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(7, "seven", new ImageView(new Image("file:resources/cards/7C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(7, "seven", new ImageView(new Image("file:resources/cards/7D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(7, "seven", new ImageView(new Image("file:resources/cards/7H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(7, "seven", new ImageView(new Image("file:resources/cards/7S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(8, "eight", new ImageView(new Image("file:resources/cards/8C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(8, "eight", new ImageView(new Image("file:resources/cards/8D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(8, "eight", new ImageView(new Image("file:resources/cards/8H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(8, "eight", new ImageView(new Image("file:resources/cards/9S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(9, "nine", new ImageView(new Image("file:resources/cards/9C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(9, "nine", new ImageView(new Image("file:resources/cards/9D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(9, "nine", new ImageView(new Image("file:resources/cards/9H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(9, "nine", new ImageView(new Image("file:resources/cards/9S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(10, "ten", new ImageView(new Image("file:resources/cards/10C.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(10, "ten", new ImageView(new Image("file:resources/cards/10D.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(10, "ten", new ImageView(new Image("file:resources/cards/10H.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
+        this.cardsInDeck.add(new Card(10, "ten", new ImageView(new Image("file:resources/cards/10S.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
         this.cardsInDeck.add(new Card(10, "knight", new ImageView(new Image("file:resources/cards/JC.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
         this.cardsInDeck.add(new Card(10, "knight", new ImageView(new Image("file:resources/cards/JD.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
         this.cardsInDeck.add(new Card(10, "knight", new ImageView(new Image("file:resources/cards/JH.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
@@ -80,7 +77,7 @@ public class Deck {
         this.cardsInDeck.add(new Card(11, "ace", new ImageView(new Image("file:resources/cards/AS.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
     };
 
-    void reshuffleDeck() {
+    private void reshuffleDeck() {
 
         cardsInDeck.addAll(drawnCards);
         drawnCards.clear();
