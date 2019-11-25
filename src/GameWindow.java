@@ -40,8 +40,8 @@ class GameWindow {
 
         deck = new Deck();
         Turn turn = new Turn();
-        player = new Player(deck, turn);
         dealer = new Dealer(deck, turn);
+        player = new Player(deck, turn, dealer);
     }
 
     private void goBackToMenu() {
@@ -201,6 +201,7 @@ class GameWindow {
         bidTextField.setAlignment(Pos.CENTER);
         bidTextField.setFont(new Font(textFieldFontSize));
         bidTextField.setStyle("-fx-background-color: transparent; -fx-text-inner-color: orange;");
+
         bidTextField.textProperty().addListener((observableValue, oldValue, newValue) -> {
             if (!newValue.matches("\\d*"))
                 bidTextField.setText(newValue.replaceAll("[^\\d]", ""));
@@ -242,9 +243,8 @@ class GameWindow {
     private void addPlayerCardsToUI() {
 
         playerCardContainer.getChildren().clear();
-        for (Card card : player.getPlayerCards()) {
+        for (Card card : player.getPlayerCards())
             playerCardContainer.getChildren().add(card.getImage());
-        }
 
     }
 
@@ -255,11 +255,14 @@ class GameWindow {
     }
 
     private void loadPlayingUI() {
+        deck.reshuffleDeck();
         addCards();
         addPlayerButtons();
     }
 
-    private void addPlayerButtons(){
+    private List<Button> buttons = new ArrayList<>();
+    private void addPlayerButtons() {
+
         final int rowIndex = 2;
         final int columnIndex = 0;
 
@@ -270,30 +273,52 @@ class GameWindow {
         HBox hBox = new HBox(hBoxSpacing);
         hBox.setAlignment(Pos.CENTER);
 
+        Button surrenderButton = new Button("SURRENDER");
+        Button takeInsuranceButton = new Button("TAKE INSURANCE");
+        Button doubleDownButton = new Button("DOUBLE DOWN");
         Button hitButton = new Button("HIT");
+
         hitButton.setOnAction(actionEvent -> {
             player.hit();
             statusLabel.setText("Your hand value is: " + player.getHandValue());
             addPlayerCardsToUI();
-            checkForRoundWinner(false);
+            checkIfPlayerWentOver();
+            hBox.getChildren().removeAll(doubleDownButton, surrenderButton, takeInsuranceButton);
         });
 
         Button standButton = new Button("STAND");
+
         standButton.setOnAction(actionEvent -> {
             dealersTurn();
+            hBox.getChildren().removeAll(hitButton, standButton, doubleDownButton, surrenderButton, takeInsuranceButton);
         });
 
-        Button doubleDownButton = new Button("DOUBLE DOWN");
+        surrenderButton.setOnAction(actionEvent -> {
+
+            hBox.getChildren().remove(surrenderButton);
+            player.surrender();
+            loadBiddingUI();
+
+        });
+
+        takeInsuranceButton.setOnAction(actionEvent -> {
+
+            hBox.getChildren().remove(takeInsuranceButton);
+
+            if (!player.takeInsurance())
+                statusLabel.setText("Not enough money");
+        });
 
         doubleDownButton.setOnAction(actionEvent -> {
-            if (player.doubleDown()) {
-                addPlayerCardsToUI();
-                dealersTurn();
-            }
-        });
 
-        Button surrenderButton = new Button("SURRENDER");
-        Button takeInsuranceButton = new Button("TAKE INSURANCE");
+            hBox.getChildren().remove(doubleDownButton);
+
+            player.hit();
+            statusLabel.setText("Your hand value is: " + player.getHandValue());
+            addPlayerCardsToUI();
+            checkIfPlayerWentOver();
+            dealersTurn();
+        });
 
         final int buttonsWidth = 150;
         final int buttonsHeight = 50;
@@ -302,7 +327,7 @@ class GameWindow {
         buttons.add(hitButton);
         buttons.add(standButton);
         buttons.add(doubleDownButton);
-
+        
         if (dealer.getFaceUpCardName().equals("ace")) {
             buttons.add(surrenderButton);
             buttons.add(takeInsuranceButton);
@@ -311,8 +336,8 @@ class GameWindow {
         if (dealer.getFaceUpCardValue() == 10)
             buttons.add(surrenderButton);
 
-        setUpPlayerButtonsStyle(buttons, buttonsWidth, buttonsHeight);
 
+        setUpPlayerButtonsStyle(buttons, buttonsWidth, buttonsHeight);
         hBox.getChildren().addAll(buttons);
 
         GridPane.setHalignment(hBox, HPos.CENTER);
@@ -336,10 +361,10 @@ class GameWindow {
             pause.play();
         }
 
-        try {
-            Thread.sleep(2);
-        } catch (Exception ignored) {}
-        checkForRoundWinner(true);
+        PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
+        pause2.setOnFinished(actionEvent -> { checkForRoundWinner(); });
+        pause2.play();
+
     }
 
     private void revealDealerCards() {
@@ -350,32 +375,38 @@ class GameWindow {
     }
 
 
-    private void checkForRoundWinner(boolean computerHadTurn) {
+    private void checkForRoundWinner() {
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(4));
+        pause.setOnFinished(actionEvent -> { loadBiddingUI(); });
+
+        if (dealer.getHandValue() > Settings.ROUND_GOAL) {
+            statusLabel.setText("Dealer went over. Player won.");
+            player.payout();
+            pause.play();
+        } else if (dealer.getHandValue() > player.getHandValue()) {
+            statusLabel.setText("Dealer's hand value is greater. Dealer won.");
+            pause.play();
+        } else if (player.getHandValue() > dealer.getHandValue()) {
+            statusLabel.setText("Player's hand value is greater. Player won.");
+            player.payout();
+            pause.play();
+        } else if (player.getHandValue() == dealer.getHandValue()) {
+            statusLabel.setText("Both hands are equal. Draw.");
+            pause.play();
+        }
+    }
+
+    private void checkIfPlayerWentOver() {
 
         PauseTransition pause = new PauseTransition(Duration.seconds(4));
         pause.setOnFinished(actionEvent -> { loadBiddingUI(); });
 
         if (player.getHandValue() > Settings.ROUND_GOAL) {
-            statusLabel.setText("Dealer won.");
+            statusLabel.setText("Player went over. Dealer won.");
             pause.play();
         }
-        else if (computerHadTurn && (dealer.getHandValue() > player.getHandValue())) {
-            statusLabel.setText("Dealer won.");
-            pause.play();
-        }
-        else if (computerHadTurn && (player.getHandValue() > dealer.getHandValue())) {
-            statusLabel.setText("Player won.");
-            player.payout();
-            pause.play();
-        }
-        else if (dealer.getHandValue() > Settings.ROUND_GOAL) {
-            statusLabel.setText("Player won.");
-            player.payout();
-            pause.play();
-        } else if (computerHadTurn && (player.getHandValue() == dealer.getHandValue())) {
-            statusLabel.setText("Draw.");
-            pause.play();
-        }
+
     }
 
 }

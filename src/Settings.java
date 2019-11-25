@@ -17,6 +17,6 @@ final class Settings {
 
     static final double BLACKJACK_PAY = 2.5;
     static final double NORMAL_PAY = 2;
-    static final double INSURANCE_PAY = 1;
+    static final double INSURANCE_PAY = 2;
 
 }

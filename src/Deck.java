@@ -77,7 +77,7 @@ class Deck {
         this.cardsInDeck.add(new Card(11, "ace", new ImageView(new Image("file:resources/cards/AS.png", Settings.IMAGE_WIDTH, Settings.IMAGE_HEIGHT, true, true))));
     };
 
-    private void reshuffleDeck() {
+    void reshuffleDeck() {
 
         cardsInDeck.addAll(drawnCards);
         drawnCards.clear();

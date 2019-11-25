@@ -6,16 +6,20 @@ public class Player implements BasicActions {
     private Turn turn;
     private Deck deck;
     private List<Card> playerCards;
+    private Dealer dealer;
 
     private int money = Settings.STARTING_CASH;
 
     private int bet;
+    private int insuranceBet;
 
-    Player(Deck deck, Turn turn) {
+    Player(Deck deck, Turn turn, Dealer dealer) {
         this.deck = deck;
         this.turn = turn;
+        this.dealer = dealer;
         playerCards = new ArrayList<>();
         this.bet = 0;
+        insuranceBet = 0;
     }
 
     void drawStartingCards() {
@@ -69,10 +73,19 @@ public class Player implements BasicActions {
 
     void surrender() {
 
+        this.money += this.bet / 2;
+
     }
 
-    void takeInsurance() {
+    boolean takeInsurance() {
 
+        if (money >= this.bet / 2) {
+            insuranceBet += this.bet / 2;
+            money += -insuranceBet;
+            return true;
+        }
+
+        return false;
     }
 
     List<Card> getPlayerCards() {
@@ -101,10 +114,23 @@ public class Player implements BasicActions {
 
     void payout() {
 
+        payInsurance();
+
         if (playerCards.size() == 2)
             this.money += bet * Settings.BLACKJACK_PAY;
         else
             this.money += bet * Settings.NORMAL_PAY;
 
     }
+
+    private void payInsurance() {
+
+        if (this.dealer.hasBlackJack()) {
+            this.money += insuranceBet * Settings.INSURANCE_PAY;
+            insuranceBet = 0;
+        }
+
+    }
+
+
 }

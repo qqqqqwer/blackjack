@@ -13,6 +13,7 @@ public class Dealer implements BasicActions {
     private Card lastDrawnCard;
 
     Dealer(Deck deck, Turn turn) {
+        lastDrawnCard = null;
         this.deck = deck;
         dealerCards = new ArrayList<>();
         this.turn = turn;
@@ -44,7 +45,15 @@ public class Dealer implements BasicActions {
         for (Card card : dealerCards)
             combinedValue += card.getCardValue();
 
+        System.out.println(dealerCards.size());
+
         return combinedValue;
+
+    }
+
+    boolean hasBlackJack() {
+
+        return this.dealerCards.size() == 2 && this.getHandValue() == 21;
 
     }
 
