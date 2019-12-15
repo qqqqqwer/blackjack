@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Player implements BasicActions {
 
-    private Turn turn;
     private Deck deck;
     private List<Card> playerCards;
     private Dealer dealer;
@@ -13,9 +12,8 @@ public class Player implements BasicActions {
     private int bet;
     private int insuranceBet;
 
-    Player(Deck deck, Turn turn, Dealer dealer) {
+    Player(Deck deck, Dealer dealer) {
         this.deck = deck;
-        this.turn = turn;
         this.dealer = dealer;
         playerCards = new ArrayList<>();
         this.bet = 0;
@@ -41,10 +39,6 @@ public class Player implements BasicActions {
 
     }
 
-    @Override
-    public void stand() {
-
-    }
 
     @Override
     public int getHandValue() {
@@ -57,19 +51,17 @@ public class Player implements BasicActions {
 
     boolean doubleDown() {
 
-        if (bet > money) {
+        if (bet < money) {
             money -= bet;
             bet *= 2;
             hit();
-            return false;
-        } else {
             return true;
+        } else {
+            System.out.println("Neuztenka litu");
+            return false;
         }
     }
 
-    void split() {
-
-    }
 
     void surrender() {
 

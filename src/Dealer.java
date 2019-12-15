@@ -8,15 +8,13 @@ import java.util.List;
 public class Dealer implements BasicActions {
 
     private Deck deck;
-    private Turn turn;
     private List<Card> dealerCards;
     private Card lastDrawnCard;
 
-    Dealer(Deck deck, Turn turn) {
+    Dealer(Deck deck) {
         lastDrawnCard = null;
         this.deck = deck;
         dealerCards = new ArrayList<>();
-        this.turn = turn;
     }
 
     void drawStartingCards() {
@@ -34,7 +32,7 @@ public class Dealer implements BasicActions {
     }
 
     public void stand() {
-        turn.nextTurn();
+
     }
 
     @Override

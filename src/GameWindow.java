@@ -39,9 +39,8 @@ class GameWindow {
         this.stageHandler = stage;
 
         deck = new Deck();
-        Turn turn = new Turn();
-        dealer = new Dealer(deck, turn);
-        player = new Player(deck, turn, dealer);
+        dealer = new Dealer(deck);
+        player = new Player(deck, dealer);
     }
 
     private void goBackToMenu() {
@@ -313,11 +312,12 @@ class GameWindow {
 
             hBox.getChildren().remove(doubleDownButton);
 
-            player.hit();
-            statusLabel.setText("Your hand value is: " + player.getHandValue());
-            addPlayerCardsToUI();
-            checkIfPlayerWentOver();
-            dealersTurn();
+            if (player.doubleDown()) {
+                statusLabel.setText("Your hand value is: " + player.getHandValue());
+                addPlayerCardsToUI();
+                checkIfPlayerWentOver();
+                dealersTurn();
+            }
         });
 
         final int buttonsWidth = 150;
