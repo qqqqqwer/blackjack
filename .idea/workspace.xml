@@ -2,45 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32c35a0e-36fc-41b1-8f19-a090d1ca3478" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PSP/BasicActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tests/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/BasicActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/BasicActions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/Dealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Turn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/BasicActions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Card.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Dealer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Deck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/GameWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/MenuWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Settings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blackjack/Turn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BasicActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BasicActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Turn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blackjack-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blackjack-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/BasicActions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Dealer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Deck.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/GameWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/META-INF/blackjack-master.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blackjack-master/META-INF/blackjack-master.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/MenuWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blackjack-master/Settings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BasicActions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Dealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/MenuWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PSP/Settings.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1U595qyoIGwiasp21sSAaONz50x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,22 +68,66 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Tests" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="PSP.Main" />
       <module name="blackjack-master" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.BetShouldReturnFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blackjack-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.PlayerTest" />
+      <option name="METHOD_NAME" value="BetShouldReturnFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.BetShouldReturnFalseWithNegativeNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blackjack-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.PlayerTest" />
+      <option name="METHOD_NAME" value="BetShouldReturnFalseWithNegativeNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.BetShouldReturnTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blackjack-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.PlayerTest" />
+      <option name="METHOD_NAME" value="BetShouldReturnTrue" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -71,8 +135,23 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.PlayerTest.BetShouldReturnFalseWithNegativeNumber" />
+        <item itemvalue="JUnit.PlayerTest.BetShouldReturnFalse" />
+        <item itemvalue="JUnit.PlayerTest.BetShouldReturnTrue" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -88,6 +167,13 @@
       <workItem from="1574698488333" duration="1340000" />
       <workItem from="1574708713647" duration="1002000" />
       <workItem from="1575835258758" duration="9000" />
+      <workItem from="1576473486595" duration="796000" />
+      <workItem from="1576501653972" duration="2054000" />
+      <workItem from="1576503737873" duration="9000" />
+      <workItem from="1576504959967" duration="272000" />
+      <workItem from="1576508087797" duration="606000" />
+      <workItem from="1576510198038" duration="4862000" />
+      <workItem from="1576515119364" duration="314000" />
     </task>
     <servers />
   </component>
@@ -106,5 +192,59 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1576515056651">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515056651" />
+    <state x="1078" y="212" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1576502309098">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1078" y="212" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576502309098" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576511188009">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576511188009" />
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom" timestamp="1576515073875">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@-1920.0.1920.1040" timestamp="1576503712793" />
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515073875" />
+    <state width="1877" height="157" key="GridCell.Tab.0.center" timestamp="1576515073875">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@-1920.0.1920.1040" timestamp="1576503712793" />
+    <state width="1877" height="157" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515073875" />
+    <state width="1877" height="157" key="GridCell.Tab.0.left" timestamp="1576515073875">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@-1920.0.1920.1040" timestamp="1576503712792" />
+    <state width="1877" height="157" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515073875" />
+    <state width="1877" height="157" key="GridCell.Tab.0.right" timestamp="1576515073875">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@-1920.0.1920.1040" timestamp="1576503712793" />
+    <state width="1877" height="157" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515073875" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576503737819">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576503737819" />
+    <state x="665" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1576502425422">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="665" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576502425422" />
+    <state x="1112" y="139" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1576502406107">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1112" y="139" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576502406107" />
+    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1576510652026">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576510652026" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576515051199">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040/1920.137.1280.984@0.0.1920.1040" timestamp="1576515051199" />
   </component>
 </project>

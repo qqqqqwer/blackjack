@@ -1,36 +1,35 @@
+package PSP;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements BasicActions {
+public class Player implements BasicActions{
 
-    private Deck deck;
     private List<Card> playerCards;
-    private Dealer dealer;
 
     private int money = Settings.STARTING_CASH;
 
     private int bet;
     private int insuranceBet;
 
-    Player(Deck deck, Dealer dealer) {
-        this.deck = deck;
-        this.dealer = dealer;
+    public Player() {
         playerCards = new ArrayList<>();
         this.bet = 0;
         insuranceBet = 0;
     }
 
-    void drawStartingCards() {
+    @Override
+    public void drawStartingCards() {
         playerCards.clear();
-        playerCards.add(deck.drawACard());
-        playerCards.add(deck.drawACard());
+        playerCards.add(Deck.getInstance().drawACard());
+        playerCards.add(Deck.getInstance().drawACard());
     }
 
     @Override
     public void hit() {
 
         Card tempCard;
-        tempCard = deck.drawACard();
+        tempCard = Deck.getInstance().drawACard();
 
         if (tempCard.getCardValue() == 11 && getHandValue() > 10)
             tempCard.setCardValue(1);
@@ -38,7 +37,6 @@ public class Player implements BasicActions {
         getPlayerCards().add(tempCard);
 
     }
-
 
     @Override
     public int getHandValue() {
@@ -57,16 +55,12 @@ public class Player implements BasicActions {
             hit();
             return true;
         } else {
-            System.out.println("Neuztenka litu");
             return false;
         }
     }
 
-
     void surrender() {
-
         this.money += this.bet / 2;
-
     }
 
     boolean takeInsurance() {
@@ -88,7 +82,7 @@ public class Player implements BasicActions {
         return money;
     }
 
-    boolean bet(int amount) {
+    public boolean bet(int amount) {
 
         this.bet = amount;
 
@@ -100,13 +94,9 @@ public class Player implements BasicActions {
             return false;
     }
 
-    void giveMoney(int value) {
-        this.money += value;
-    }
+    void payout(Dealer dealer) {
 
-    void payout() {
-
-        payInsurance();
+        payInsurance(dealer);
 
         if (playerCards.size() == 2)
             this.money += bet * Settings.BLACKJACK_PAY;
@@ -115,9 +105,9 @@ public class Player implements BasicActions {
 
     }
 
-    private void payInsurance() {
+    private void payInsurance(Dealer dealer) {
 
-        if (this.dealer.hasBlackJack()) {
+        if (dealer.hasBlackJack()) {
             this.money += insuranceBet * Settings.INSURANCE_PAY;
             insuranceBet = 0;
         }

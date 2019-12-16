@@ -1,4 +1,4 @@
-import javafx.scene.image.Image;
+package PSP;
 import javafx.scene.image.ImageView;
 
 class Card {

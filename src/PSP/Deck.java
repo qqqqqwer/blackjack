@@ -1,3 +1,5 @@
+package PSP;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -10,9 +12,18 @@ class Deck {
     private List<Card> cardsInDeck;
     private List<Card> drawnCards;
 
-    Deck() {
+    private Deck() {
         initializeCards();
         reshuffleDeck();
+    }
+
+    private static Deck deck = null;
+    static Deck getInstance() {
+
+        if (deck == null)
+            deck = new Deck();
+
+        return deck;
     }
 
     final ImageView getFaceDownCardImage() {

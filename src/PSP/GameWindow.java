@@ -1,3 +1,5 @@
+package PSP;
+
 import javafx.animation.PauseTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -20,8 +22,6 @@ class GameWindow {
     private MenuWindow menuWindow;
     private Stage stageHandler;
 
-    private Deck deck;
-
     private Player player;
     private Dealer dealer;
 
@@ -38,9 +38,8 @@ class GameWindow {
         this.menuWindow = menuWindow;
         this.stageHandler = stage;
 
-        deck = new Deck();
-        dealer = new Dealer(deck);
-        player = new Player(deck, dealer);
+        dealer = new Dealer();
+        player = new Player();
     }
 
     private void goBackToMenu() {
@@ -250,16 +249,15 @@ class GameWindow {
     private void addStartingDealerCardsToUI() {
 
         dealerCardContainer.getChildren().clear();
-        dealerCardContainer.getChildren().addAll(dealer.getDealerCards().get(0).getImage(), deck.getFaceDownCardImage());
+        dealerCardContainer.getChildren().addAll(dealer.getDealerCards().get(0).getImage(), Deck.getInstance().getFaceDownCardImage());
     }
 
     private void loadPlayingUI() {
-        deck.reshuffleDeck();
+        Deck.getInstance().reshuffleDeck();
         addCards();
         addPlayerButtons();
     }
 
-    private List<Button> buttons = new ArrayList<>();
     private void addPlayerButtons() {
 
         final int rowIndex = 2;
@@ -382,14 +380,14 @@ class GameWindow {
 
         if (dealer.getHandValue() > Settings.ROUND_GOAL) {
             statusLabel.setText("Dealer went over. Player won.");
-            player.payout();
+            player.payout(dealer);
             pause.play();
         } else if (dealer.getHandValue() > player.getHandValue()) {
             statusLabel.setText("Dealer's hand value is greater. Dealer won.");
             pause.play();
         } else if (player.getHandValue() > dealer.getHandValue()) {
             statusLabel.setText("Player's hand value is greater. Player won.");
-            player.payout();
+            player.payout(dealer);
             pause.play();
         } else if (player.getHandValue() == dealer.getHandValue()) {
             statusLabel.setText("Both hands are equal. Draw.");

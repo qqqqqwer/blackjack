@@ -1,3 +1,5 @@
+package PSP;
+
 final class Settings {
 
     private Settings() {};

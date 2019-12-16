@@ -1,37 +1,30 @@
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+package PSP;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dealer implements BasicActions {
+public class Dealer implements BasicActions{
 
-    private Deck deck;
     private List<Card> dealerCards;
     private Card lastDrawnCard;
 
-    Dealer(Deck deck) {
+    Dealer() {
         lastDrawnCard = null;
-        this.deck = deck;
         dealerCards = new ArrayList<>();
     }
 
-    void drawStartingCards() {
+    @Override
+    public void drawStartingCards() {
         dealerCards.clear();
-        dealerCards.add(deck.drawACard());
-        dealerCards.add(deck.drawACard());
+        dealerCards.add(Deck.getInstance().drawACard());
+        dealerCards.add(Deck.getInstance().drawACard());
     }
 
     @Override
     public void hit() {
 
-        lastDrawnCard = deck.drawACard();
+        lastDrawnCard = Deck.getInstance().drawACard();
         dealerCards.add(lastDrawnCard);
-
-    }
-
-    public void stand() {
 
     }
 
@@ -42,8 +35,6 @@ public class Dealer implements BasicActions {
 
         for (Card card : dealerCards)
             combinedValue += card.getCardValue();
-
-        System.out.println(dealerCards.size());
 
         return combinedValue;
 
@@ -57,10 +48,6 @@ public class Dealer implements BasicActions {
 
     List<Card> getDealerCards() {
         return this.dealerCards;
-    }
-
-    void takeTurn() {
-        hit();
     }
 
     String getFaceUpCardName() {
